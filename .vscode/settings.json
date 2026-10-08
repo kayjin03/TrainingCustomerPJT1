@@ -588,6 +588,22 @@
 		"overwrite": true,
 		"isProtected": false,
 		"env": "f"
+	},
+	{
+		"id": "174303027",
+		"name": "QA",
+		"user": ".su@174303027",
+		"overwrite": true,
+		"isProtected": true,
+		"env": "f"
+	},
+	{
+		"id": "174303028",
+		"name": "PROD",
+		"user": ".su@174303028",
+		"overwrite": true,
+		"isProtected": true,
+		"env": "f"
 	}
 ]
 }
