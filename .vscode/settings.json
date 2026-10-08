@@ -579,5 +579,15 @@
 ],
 "changelog-generator.scopes": [
 	"JFROG"
+],
+"esker.eod.accounts": [
+	{
+		"id": "174303026",
+		"name": "DEV",
+		"user": ".su@174303026",
+		"overwrite": true,
+		"isProtected": false,
+		"env": "f"
+	}
 ]
 }
