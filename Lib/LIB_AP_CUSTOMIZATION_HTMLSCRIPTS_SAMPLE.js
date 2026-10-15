@@ -193,6 +193,8 @@ var Lib;
                     LayoutHelpers.SetCustomHeaderEvents();
                     //Init line items event handlers
                     LayoutHelpers.SetCustomLineItemsEvents();
+                    // US: As an AP Specialist, I don't need to see the source of the invoice
+                    Controls.ReceptionMethod__.Hide(true);
                 };
                 /**
                  * @method Lib.AP.Customization.HTMLScripts.AddCustomTopMessagesWarning
