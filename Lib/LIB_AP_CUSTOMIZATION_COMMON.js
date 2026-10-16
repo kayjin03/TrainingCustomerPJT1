@@ -213,6 +213,10 @@ var Lib;
                  * </code></pre>
                  */
                 Common.GetVendorCustomFields = function () {
+                    // US: Supplier type automatically filled from the supplier master data
+                    return [
+                        { nameInForm: "Z_SupplierType__", nameInTable: "Z_SupplierType__" }
+                    ];
                 };
                 /**
                  * @method Lib.AP.Customization.Common.ShouldFillVendorFieldsFromSAP

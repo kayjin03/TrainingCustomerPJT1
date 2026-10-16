@@ -186,6 +186,17 @@ var Lib;
                  * }
                  * </code></pre>
                  */
+                // US: Warning on Supplier name when the Supplier type is missing in the master data
+                function Z_CheckSupplierType() {
+                    var hasVendor = !!Data.GetValue("VendorNumber__");
+                    var supplierType = Data.GetValue("Z_SupplierType__");
+                    if (hasVendor && !supplierType) {
+                        Controls.VendorName__.SetWarning(Language.Translate("_Z_SupplierTypeMissing"));
+                    } else {
+                        Controls.VendorName__.SetWarning("");   // clear the warning
+                    }
+                }
+
                 HTMLScripts.OnHTMLScriptEnd = function () {
                     //Handle displayed header fields
                     LayoutHelpers.InitHeaderLayout();
@@ -195,6 +206,8 @@ var Lib;
                     LayoutHelpers.SetCustomLineItemsEvents();
                     // US: As an AP Specialist, I don't need to see the source of the invoice
                     Controls.ReceptionMethod__.Hide(true);
+
+                    Z_CheckSupplierType();
                 };
                 /**
                  * @method Lib.AP.Customization.HTMLScripts.AddCustomTopMessagesWarning
@@ -1002,6 +1015,8 @@ var Lib;
                  * </code></pre>
                  */
                 HTMLScripts.OnVendorChange = function (queryResult) {
+                    // US: Warning when the Supplier type is missing
+                    Z_CheckSupplierType();
                 };
                 /**
                 * @method Lib.AP.Customization.HTMLScripts.OnFillVendorContactEmail
