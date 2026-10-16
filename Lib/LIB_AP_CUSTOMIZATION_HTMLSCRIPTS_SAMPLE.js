@@ -193,7 +193,7 @@ var Lib;
                     if (hasVendor && !supplierType) {
                         Controls.VendorName__.SetWarning(Language.Translate("_Z_SupplierTypeMissing"));
                     } else {
-                        Controls.VendorName__.SetWarning("");   // clear the warning
+                     Controls.VendorName__.SetWarning("");   // clear the warning
                     }
                 }
 

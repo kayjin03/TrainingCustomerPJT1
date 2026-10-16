@@ -7,7 +7,9 @@
 			<![CDATA[
 {
 	"ProcessTemplate": {
-		"_Z_TextRequired": "Please make sure the Text is filled before posting"
+		"_Z_TextRequired": "Please make sure the Text is filled before posting",
+		"_Z_SupplierTypeMissing": "Supplier type is missing in the supplier master data",
+		"_Z_SupplierTypeMissing": "Supplier type is missing in the supplier master data"
 	}
 }
 			]]>
@@ -17,7 +19,9 @@
 			<![CDATA[
 {
 	"ProcessTemplate": {
-		"_Z_TextRequired": "Veuillez renseigner le champ Texte avant de comptabiliser la facture"
+		"_Z_TextRequired": "Veuillez renseigner le champ Texte avant de comptabiliser la facture",
+		"_Z_SupplierTypeMissing": "Le type de fournisseur est absent des données de base du fournisseur",
+		"_Z_SupplierTypeMissing": "Le type de fournisseur est manquant dans les données fournisseur"
 	}
 }
 			]]>
