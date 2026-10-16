@@ -281,6 +281,24 @@ var Lib;
                  * </code></pre>
                  */
                 HTMLScripts.OnRefreshApproversListRowEnd = function (workflowUIParameters, table, row, index) {
+                    // US: Block AP Specialists from editing/removing reviewers when the option is enabled
+                    var optionValue = Sys.Parameters.GetInstance("AP").GetParameter("Z_BlockAPWorkflowEdit", "0");
+                    var stepRole = Lib.AP.WorkflowCtrl.GetCurrentStepRole();
+                    var contributor = Lib.AP.WorkflowCtrl.workflowUI.GetContributorAt(row);
+                    //console.log("[Z_DEBUG] row", index, "| option =", optionValue, "| stepRole =", stepRole, "| row role =", contributor && contributor.role);
+
+                    if (optionValue !== "1") {
+                        return; // option off: standard behaviour
+                    }
+                    if (stepRole !== Lib.AP.WorkflowCtrl.roles.apStart) {
+                        return; // only for the AP specialist
+                    }
+                    // Reviewers only ("_Role controller"); approvers stay editable
+                    if (contributor && contributor.role === "_Role controller") {
+                        table.HideTableRowDeleteForItem(index, true); // remove the "x" (delete)
+                        row.Approver__.SetBrowsable(false);           // remove the "..." (change user)
+                        row.Approver__.SetHoverMessage();             // remove the hover info
+                    }
                 };
                 /**
                  * @method Lib.AP.Customization.HTMLScripts.GetContributorsExtraFilter

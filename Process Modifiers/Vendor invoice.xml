@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root name="Vendor invoice modifiers" xmlns="urn:esker-serialization">
+	<ProcessModifiers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+		<!-- Custom LG: message when Text (InvoiceDescription__) is empty at posting -->
+		<ProcessModifier ObjectType="customLg" SubObjectType="notSet" NameSpace="customLg" Property="customLg_process_en" Value="">
+			<![CDATA[
+{
+	"ProcessTemplate": {
+		"_Z_TextRequired": "Please make sure the Text is filled before posting"
+	}
+}
+			]]>
+		</ProcessModifier>
+
+		<ProcessModifier ObjectType="customLg" SubObjectType="notSet" NameSpace="customLg" Property="customLg_process_fr" Value="">
+			<![CDATA[
+{
+	"ProcessTemplate": {
+		"_Z_TextRequired": "Veuillez renseigner le champ Texte avant de comptabiliser la facture"
+	}
+}
+			]]>
+		</ProcessModifier>
+
+		<!-- Keep demo behaviour: do not wait for an ERP acknowledgment -->
+		<ProcessModifier ObjectType="externalvariables" SubObjectType="notSet" NameSpace="externalvariables" Property="WaitForERPAck" Value="false" />
+
+	</ProcessModifiers>
+</root>

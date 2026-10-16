@@ -307,7 +307,14 @@ var Lib;
                  * }
                  * </code></pre>
                  */
+                function Z_IsPostingStep() {
+                    return Lib.AP.WorkflowCtrl.GetCurrentStepRole() === Lib.AP.WorkflowCtrl.roles.apStart
+                        && Lib.AP.WorkflowCtrl.GetNbRemainingControllers() === 0;
+                }
+
                 Common.GetRequiredFields = function (requiredFields) {
+                    requiredFields.Header.InvoiceDescription__ = Z_IsPostingStep();
+                    return requiredFields;
                 };
                 /**
                  * @method Lib.AP.Customization.Common.GetCodingsPredictionFields
@@ -508,6 +515,11 @@ var Lib;
                  * </code></pre>
                  */
                 Common.OnValidateForm = function (isFormValid) {
+                    if (Z_IsPostingStep() && !Data.GetValue("InvoiceDescription__")) {
+                        Data.SetError("InvoiceDescription__", Language.Translate("_Z_TextRequired"));
+                        return false;
+                    }
+                    return isFormValid;
                 };
                 /**
                  * @method Lib.AP.Customization.Common.IsAPEndDisabled
