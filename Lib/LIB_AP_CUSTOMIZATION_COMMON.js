@@ -523,7 +523,7 @@ var Lib;
                         Data.SetError("InvoiceDescription__", Language.Translate("_Z_TextRequired"));
                         return false;
                     }
-                    return isFormValid;
+                    return isFormValid; //commit again
                 };
                 /**
                  * @method Lib.AP.Customization.Common.IsAPEndDisabled
