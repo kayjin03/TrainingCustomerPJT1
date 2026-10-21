@@ -4577,6 +4577,13 @@ var Lib;
                  * 	}
                  */
                 Common.AllowAutoPostAfterReview = function () {
+                    // AP manager rule: an invoice is never posted while Text (InvoiceDescription__) is empty.
+                    // Disable auto-posting after review in that case: the invoice returns to the AP specialist,
+                    // where OnValidateForm blocks the post until Text is filled.
+                    if (!Data.GetValue("InvoiceDescription__")) {
+                        return false;
+                    }
+                    // Text filled: return nothing, so the configuration's auto-post setting applies as usual
                 };
                 /**
                  * @method Lib.AP.Customization.Common.OverrideDownPaymentInvoiceSupport
